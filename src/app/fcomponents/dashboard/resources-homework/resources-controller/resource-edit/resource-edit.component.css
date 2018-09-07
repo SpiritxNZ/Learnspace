@@ -1,0 +1,170 @@
+/* 通用样式 */
+html,body,div,ul,li{
+  margin:0;
+  padding: 0;
+}
+
+.myStepper{
+  margin-top:20px;
+    /* margin-left: 3%;
+    margin-right: 3%; */
+}
+
+ul,ol{
+    list-style: none;
+}
+
+
+/* head style */
+.ac .ac-item .ac-item-hd {
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size:12px;
+    color: #268fe6;
+
+}
+
+
+.ac .ac-item .ac-item-hd .fa{
+
+    position: relative;
+    top:5px;
+    font-size:29px;
+}
+.ac .ac-item .ac-item-hd:hover{
+    color: #333333;
+}
+
+.ac .ac-item .ac-item-bd .row{
+    margin-top:4%;
+}
+
+.ac .on .ac-item-hd{
+    color:rgb(63, 55, 55);
+}
+
+.ac .ac-item .ac-item-bd{
+
+    padding:20px 20px;
+    text-align: center;
+
+}
+
+
+@media screen and (min-width: 541px) {
+/* 大屏幕 上下结构 */
+/* 设置宽度100% */
+.ac{
+    width:100%;
+    /* border:1px solid #ccc; */
+}
+
+
+/* 让每个li元素横向排列 设定宽度，居中 */
+.ac .ac-item{
+    float: left;
+    width:33.3333%;
+    text-align: center;
+
+}
+
+.ac .ac-item .ac-item-hd{
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom:1px solid #ccc;
+}
+/* 让内容在标题下方的固定位置出现
+    display:none 表示不出现
+*/
+
+.ac .ac-item .ac-item-bd{
+    position: absolute;
+    left: 0;
+    top:65px;
+    width: 100%;
+    /* height:100%; */
+    /* border: 1px red dotted; */
+    display:none;
+}
+
+
+
+/* 通过jquery 操作class=“on”的内容为显示内容 */
+.ac .on .ac-item-hd{
+    border-bottom: none;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-top:1px solid #ccc;
+
+}
+.ac .on .ac-item-bd{
+    display:block;
+}
+
+
+}
+
+@media screen and (max-width: 540px) {
+/* 小屏幕 左右结构 */
+    .ac{
+        width: 100%;
+        /* border:1px solid #ccc; */
+    }
+
+    .ac .ac-item {
+       clear:both;
+    }
+    .ac .ac-item .ac-item-hd{
+        margin-top:2%;
+        padding-left: 4%;
+        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5em;
+
+        border-top:1px solid #ccc;
+        border-right:1px solid #ccc;
+        border-bottom:1px solid #ccc;
+        background-color: rgba(170, 160, 160, 0.473);
+    }
+
+    .ac .ac-item .ac-item-bd{
+        height:100%;
+        display: none;
+    }
+
+    .ac .on .ac-item-hd{
+        border-left: 1px solid #ccc;
+        border-bottom: none;
+
+    }
+    .ac .on .ac-item-bd{
+        display: block;
+        border-bottom-right-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;
+        border:1px solid #ccc;
+
+    }
+
+}
+
+.tag-info {
+  background-color: #00CED1;
+  border-radius: 2px;
+  margin: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.tag-info i {
+  color: white;
+  font-size: 10px;
+}
+
+.tag-name {
+  color: #1E90FF;
+}

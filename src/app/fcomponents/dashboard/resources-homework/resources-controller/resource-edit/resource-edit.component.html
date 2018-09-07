@@ -1,0 +1,102 @@
+<div class="myStepper col-12 col-xl-8 col-lg-8">
+  <ul class="ac">
+    <li class="ac-item on">
+      <div class="ac-item-hd" >
+        <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <span>  information</span>
+      </div>
+      <div class="ac-item-bd" id="ac-item-bd-1">
+        <div class="content">
+          <div class="">
+            <form class="col-12" [formGroup]="basicPostInfoForm">
+              <div class="form-group">
+                <div class="col-12">
+                  <label for="title-input">Title</label>
+                  <input id="title-input" type="text" class="form-control" formControlName="title">
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <label for="">Subject</label>
+                    <select class="form-control" name="" formControlName="subject">
+                      <option ></option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <label for="">Grade</label>
+                    <select class="form-control" name="" formControlName="grade">
+                      <option value=""></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <!-- formControlName="view" -->
+                    Privacy goes here
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="">Description</label>
+                  <textarea class="form-control" rows="5" formControlName="description"></textarea>
+                </div>
+                <div class="row">
+                  <label for="">Tags <a>Optional</a></label>
+                  <!-- <span>Here goes the tag</span> -->
+                  <div *ngIf="postTags">
+                    <div class="tag-info" *ngFor="let tag of postTags">
+                      <span class="tag-name">{{tag}}</span>
+                      <i class="far fa-window-close"></i>
+                    </div>
+                  </div>
+                  <div id="tag-editor" class="">
+                    <input class="form-control" placeholder="Put tags to better describe your resource.">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <button type="button" class="btn btn-secondary btn-sm" disabled >Privious</button>
+          <button type="button" class="btn btn-secondary btn-sm nextBtn"  >Next</button>
+        </div>
+      </div>
+    </li>
+
+    <li class="ac-item">
+      <div class="ac-item-hd" >
+        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+        Upload
+      </div>
+      <div class="ac-item-bd" id="ac-item-bd-2">
+        <div class="content">
+        Quae repudiandae fugiat illo cupiditate excepturiesse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis
+        impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae
+        illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At
+        quia quaerat asperiores.
+        </div>
+        <div class="row justify-content-around">
+            <button type="button" class="btn btn-secondary btn-sm prevBtn" >Privious</button>
+            <button type="button" class="btn btn-secondary btn-sm nextBtn" >Next</button>
+        </div>
+      </div>
+    </li>
+
+    <li class="ac-item">
+      <div class="ac-item-hd" >
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        Check
+      </div>
+      <div class="ac-item-bd" id="ac-item-bd-3">
+        <div class="content">
+         Ad necessitatibus velit, accusantium expedita debitisimpedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae
+        illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At
+        quia quaerat asperiores.
+      </div>
+        <div class="row justify-content-around">
+            <button type="button" class="btn btn-secondary btn-sm prevBtn" >Privious</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnSave">Save</button>
+          </div>
+      </div>
+    </li>
+  </ul>
+</div>

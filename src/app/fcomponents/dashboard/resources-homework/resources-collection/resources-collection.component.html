@@ -1,0 +1,39 @@
+<p>
+  resources-collection works!
+</p>
+
+<div *ngIf="resourceType == 0">
+  <div *ngIf="mode == 'create'">
+    <app-article-parent [mode]="'create'"></app-article-parent>
+  </div>
+  <div *ngIf="resourceData">
+    <div *ngIf="mode == 'edit'">
+      <app-article-parent [mode]="'edit'" [data]="returnedResourceData"></app-article-parent>
+    </div>
+    <div *ngIf="mode == 'view'">
+      <app-article-parent [mode]="'view'" [data]="returnedResourceData"></app-article-parent>
+    </div>
+  </div>
+</div>
+<div *ngIf="resourceType == 1">
+  <div *ngIf="mode == 'create'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+  <div *ngIf="mode == 'edit'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+  <div *ngIf="mode == 'view'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+</div>
+<div *ngIf="resourceType == 2">
+  <div *ngIf="mode == 'create'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+  <div *ngIf="mode == 'edit'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+  <div *ngIf="mode == 'view'">
+    <app-article-parent [mode]="mode"></app-article-parent>
+  </div>
+</div>
