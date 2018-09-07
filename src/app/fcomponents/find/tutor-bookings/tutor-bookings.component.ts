@@ -11,6 +11,7 @@ import * as moment from 'moment';
   styleUrls: ['./tutor-bookings.component.css']
 })
 export class TutorBookingsComponent implements OnInit {
+<<<<<<< HEAD
   newArray = [];// temparary session container for further pick up
   allSessions = [];
   showWarningMes = false;//operation indicator
@@ -23,11 +24,29 @@ export class TutorBookingsComponent implements OnInit {
   subjects=[];// subjects view
   curriculums=[];// curriculum view
   locations=[];// location view
+=======
+  newArray = [];//temparary session container for further pick up
+  allSessions = [];
+  showWarningMes = false;//operation indicator
+  eightLimitMes = false //8 sessions limit indicator
+  indicator = false; // for page loading indicator message
+  feedback: string;//the feedback messsage when user click checkout
+  billNum=0; //for cart display totolly money
+  savedBillNum:number;//for cart display totolly saved money
+  tutorPrice= [];  //for money calculation
+  subjects=[];//subjects view
+  curriculums=[];//curriculum view
+  locations=[];//location view
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   tutorId:string;
   userId:string;
   tutorProfileId:string;
   startTime=[];
+<<<<<<< HEAD
   preDate: any;// when user click via book popover
+=======
+  preDate: any;//when user click via book popover
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   session={
     date_time:'',
     duration: 0,
@@ -59,12 +78,20 @@ export class TutorBookingsComponent implements OnInit {
     this.deleLessonPop();
 
   }
+<<<<<<< HEAD
   // subscribe data from the server
+=======
+  //subscribe data from the server
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   getTutorData(){
     this.learnerService.showTutor(this.tutorProfileId).subscribe(
       (res) => {
         this.setTutorData(res);
+<<<<<<< HEAD
         // set initial session data via 'book session' popover
+=======
+        //set initial session data via 'book session' popover
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         console.log(this.preDate);
         if(this.preDate){
           let x=this.preDate
@@ -76,12 +103,20 @@ export class TutorBookingsComponent implements OnInit {
       (error) => console.log(error)
     )
   }
+<<<<<<< HEAD
   // set the tutor data and schedule data
+=======
+  //set the tutor data and schedule data
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   setTutorData(res){
     console.log(res);
     let data=res['data'].thisTutorInfo;
     this.subjects = data.discipline.split(",");
+<<<<<<< HEAD
     this.curriculums = data.curriculum.split(',');
+=======
+    this.curriculums = data.curriculum.split(",");
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     this.locations = res['data'].thisTutorProfile.teaching_locations;
     this.session.subject=this.subjects[0];
     this.session.curriculum=this.curriculums[0];
@@ -92,19 +127,34 @@ export class TutorBookingsComponent implements OnInit {
     this.tutorId = data.user_id.toString();
     this.userId = this.localStorage.getItem('lsaUserId');
     console.log(this.tutorId,this.userId);
+<<<<<<< HEAD
     // set the schedule data for calendar
     this.eventContainer=this.calendarService.first(res['data'].thisTutorSchedule);
     this.events=this.eventContainer.free;
     for(let i=0; i<this.events.length; i++){// delete the free time that before current time
+=======
+    //set the schedule data for calendar
+    this.eventContainer=this.calendarService.first(res['data'].thisTutorSchedule);
+    this.events=this.eventContainer.free;
+    for(let i=0; i<this.events.length; i++){//delete the free time that before current time
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       let eve=this.events[i];
       if(moment(eve.end).isBefore(moment())){
         delete this.events[i];
         this.events.splice(i,1);
+<<<<<<< HEAD
         i=i - 1;
       }
     }
     this.indicator = true;
     this.events.forEach(element => {// set for popover validation
+=======
+        i=i-1;
+      }
+    }
+    this.indicator=true;
+    this.events.forEach(element => {//set for popover validation
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       this.startTime.push(element.start);
     });
     console.log(this.startTime);
@@ -117,6 +167,7 @@ export class TutorBookingsComponent implements OnInit {
     const timeFormat = day + 'T' + hour + ':' + minutes + ':00';
     return timeFormat;
   }
+<<<<<<< HEAD
   // change the value in cart via select button
   change(x){
     let selected = event.srcElement['value'];
@@ -141,12 +192,39 @@ export class TutorBookingsComponent implements OnInit {
         x.date = moment(x.date).add(30,'minutes').format().substr(0,19);
       };
       x.date = moment(x.date).subtract(30 * duration,'minutes').format().substr(0,19);
+=======
+  //change the value in cart via select button
+  change(x){
+    let selected = event.srcElement['value'];
+    for(let i=0; i<this.sessions.length; i++){
+      let t=this.sessions[i];
+      let duration=t.s_duration*2;
+      for(let i=0; i<duration; i++){
+        for(let k=0; k<this.newArray.length; k++){
+          let tt=this.newArray[k];
+          if(x.date==tt.time){
+            if(x.item==tt.subject){  tt.subject=selected;  break;}
+            if(x.item==tt.curriculum){  tt.curriculum=selected;  break;}
+            if(x.item==tt.location){   tt.location=selected;  break;}
+          }
+        }
+        for(let j=0; j<this.events.length; j++){
+          if(x.date==this.events[j].start && this.events[j].color=='#00ddff'&&x.item==t.s_subject){
+            this.events[j].title=selected;
+            console.log(this.events[j],t.s_subject);
+          }
+        }
+        x.date=moment(x.date).add(30,'minutes').format().substr(0,19);
+      };
+      x.date=moment(x.date).subtract(30*duration,'minutes').format().substr(0,19);
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     }
     $('#calendar').fullCalendar('removeEvents');
     $('#calendar').fullCalendar( 'addEventSource', this.events);
     this.setSessions();
     this.setBill();
   }
+<<<<<<< HEAD
   // add lesson in popover
   addLessonPop(){
     $(() => {
@@ -159,10 +237,25 @@ export class TutorBookingsComponent implements OnInit {
       });
       console.log(allEvents)
       let e =allEvents[0];
+=======
+  //add lesson in popover
+  addLessonPop(){
+    $(()=> {
+      $(document).on('click', '#button2', ()=> {
+      let startTime = $('#popoverTime2').html().substr(23, 5);
+      let tempDate= $('#popoverDate2').html().substr(23, 11);
+      let stTime=tempDate+'T'+startTime+':00';
+      let allEvents = $('#calendar').fullCalendar('clientEvents',function(e){
+        return (e.start.format()==stTime)
+      });
+      console.log(allEvents)
+      let e=allEvents[0];
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       this.addLesson(e);
       });
     });
   }
+<<<<<<< HEAD
   // delete lesson in popover
   deleLessonPop(){
     $(() => {
@@ -187,18 +280,52 @@ export class TutorBookingsComponent implements OnInit {
     let test = event.end as moment.Moment;
     let y;
     if (this.startTime.includes(test.format())){
+=======
+  //delete lesson in popover
+  deleLessonPop(){
+    $(()=> {
+      $(document).on('click', '#button', ()=> {
+      let startTime = $('#popoverTime').html().substr(23, 5);
+      let endTime = $('#popoverTime').html().substr(31, 6);
+      let tempDate= $('#popoverDate').html().substr(23, 11);
+      let stTime=tempDate+'T'+startTime+':00';
+      let edTime=tempDate+'T'+endTime+':00';
+      console.log(tempDate,startTime,endTime,stTime,edTime,this.events);
+      let end=moment(edTime).subtract(30,'minutes').format().substr(0,19);
+      let dura = 4;
+      $('.popover').remove();
+      this.feedback=null;
+      this.deleLesson(stTime,dura);
+      });
+    });
+  }
+  //show book lesson popover
+  showBookPop(event,element){
+    let x = event.start as moment.Moment;
+    let test = event.end as moment.Moment;
+    let y;
+    if(this.startTime.includes(test.format())){
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       y = (event.end as moment.Moment).add(30, 'minutes');
     }else{  y = (event.end as moment.Moment); };
     let startTime = x.format();
     let endTime = y.format();
     let date = x.format().substr(0, 10);
+<<<<<<< HEAD
     if (event.color === '#00ad2b') {
+=======
+    if (event.color ==='#00ad2b') {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       (element as any).popover({
         title: this.session.subject,
         selector: '.popover',
         container: '#calendar', // the popover now is one part of the element, append the popover on the element
         html: true, // allow the content to be html
+<<<<<<< HEAD
         content: '<p id="popoverDate2"><strong>Date: </strong>' + date + '</p>' + '<p id="popoverTime2"><strong>Time: </strong>' + startTime.substr(11, 5) + ' - ' + endTime.substr(11, 5) + '</p>' + '<button id="button2" class="btn btn-primary btn-block">Book Session</button>',
+=======
+        content: '<p id="popoverDate2"><strong>Date: </strong>' + date + '</p>' + '<p id="popoverTime2"><strong>Time: </strong>' + startTime.substr(11,5) + ' - ' + endTime.substr(11,5) + '</p>' + '<button id="button2" class="btn btn-primary btn-block">Book Session</button>',
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         trigger: 'manual',
         placement: 'left'
       }).on('mouseenter', function() {
@@ -217,7 +344,11 @@ export class TutorBookingsComponent implements OnInit {
       });
     }
   }
+<<<<<<< HEAD
   // show delete lesson popover
+=======
+  //show delete lesson popover
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   showDeletePop(event, element){
     let x = event.start as moment.Moment;
     let y = event.end as moment.Moment;
@@ -256,6 +387,7 @@ export class TutorBookingsComponent implements OnInit {
       });
     }
   }
+<<<<<<< HEAD
   // delete lesson method
   deleLesson(time, dura){
     let duration = dura * 2;
@@ -275,11 +407,33 @@ export class TutorBookingsComponent implements OnInit {
         }
       }
       time = moment(time).add(30, 'minutes').format().substr(0, 19);
+=======
+  //delete lesson method
+  deleLesson(time,dura){
+    let duration=dura*2;
+    for(let i=0; i<duration; i++){
+      for(let j=0; j<this.events.length; j++){
+        if(time==this.events[j].start){
+          this.events[j].color='#00ad2b';
+          this.events[j].title='';
+        }
+      }
+      for(let k=0; k<this.newArray.length; k++){
+        let tt=this.newArray[k];
+        if(time==tt.time){
+          delete this.newArray[k];
+          this.newArray.splice(k,1);
+          k=k-1;
+        }
+      }
+      time=moment(time).add(30,'minutes').format().substr(0,19);
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     }
     $('#calendar').fullCalendar('removeEvents');
     $('#calendar').fullCalendar( 'addEventSource', this.events);
     this.setSessions();
     this.setBill();
+<<<<<<< HEAD
     this.feedback = null;
   }
   // add lesson method
@@ -287,11 +441,24 @@ export class TutorBookingsComponent implements OnInit {
     $('.popover').remove();
     this.eightLimitMes = false;
     this.feedback = null;
+=======
+    this.feedback=null;
+  }
+  //add lesson method
+  addLesson(e){
+    $('.popover').remove();
+    this.eightLimitMes=false;
+    this.feedback=null;
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     let cloned = this.newArray.map(x => Object.assign({}, x));
     let mySessions = this.seperateSession(cloned);
     // every time we need to reset allsessions
     this.allSessions = [];
+<<<<<<< HEAD
     if (mySessions.length < 8 && e.color === '#00ad2b'){
+=======
+    if(mySessions.length<8 && e.color ==='#00ad2b'){
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       let start = e.start;
       let current = (start as moment.Moment).format();
       let next = (e.start as moment.Moment).add(30, 'minutes').format();
@@ -331,6 +498,7 @@ export class TutorBookingsComponent implements OnInit {
       this.setSessions();
       this.setBill();
     }else{
+<<<<<<< HEAD
       if (mySessions.length == 8){ this.eightLimitMes = true }
     }
   }
@@ -380,6 +548,40 @@ export class TutorBookingsComponent implements OnInit {
     $('#calendar').fullCalendar('removeEvents');
     $('#calendar').fullCalendar( 'addEventSource', this.events);
   }
+=======
+      if(mySessions.length==8){ this.eightLimitMes=true }
+    }
+  }
+  //set summary bill
+  setBill(){
+    this.billNum=0;
+    this.savedBillNum=0;
+    for(let i=0; i<this.sessions.length; i++){
+      let x=this.sessions[i];
+      if(x.s_duration<2){
+        this.billNum = this.billNum+ this.session.rate[0]*x.s_duration;
+      }else{
+        this.billNum = this.billNum+ this.session.rate[1]*x.s_duration;
+        this.savedBillNum = this.savedBillNum+x.s_duration*(this.session.rate[0]-this.session.rate[1]);
+      }
+    }
+  }
+  // when user click checkout button to submit
+  checkOut(){
+    console.log(this.sessions);
+    //check if the userId equel the tutorId first
+    if(this.sessions.length==0){
+      this.feedback="Please book lessons first.";
+    }else if(this.tutorId===this.userId){
+              this.feedback="You cannot book your own free time.";
+          }else{
+            this.learnerService.storeLearnerSessions(this.tutorProfileId,this.sessions).subscribe(
+              (res)=>{console.log(res); this.feedback='Succeed!'},
+              (error)=>{console.log(error); }
+            )
+          }
+  }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   // let the user to set session information like subject, curriculum and location
   setInfo(x){
     let selected = event.srcElement.innerHTML;
@@ -387,24 +589,40 @@ export class TutorBookingsComponent implements OnInit {
     let displayedText = selected.slice(0, 10) + ' ...';
     console.log(displayedText, selected);
     $(x.btn).html(displayedText);
+<<<<<<< HEAD
     if (x.item === 'subject'){this.session.subject = selected; }
     if (x.item === 'curriculum'){this.session.curriculum = selected; }
     if (x.item === 'location'){this.session.location = selected; }
   }
   // set the sessions object value for subscription
+=======
+    if(x.item==='subject'){this.session.subject=selected;}
+    if(x.item==='curriculum'){this.session.curriculum=selected;}
+    if(x.item==='location'){this.session.location=selected;}
+  }
+  //set the sessions object value for subscription
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   setSessions(){
     let cloned = this.newArray.map(x => Object.assign({}, x));
     let mySessions = this.seperateSession(cloned);
     // every time we need to reset allsessions
     this.allSessions = [];
+<<<<<<< HEAD
     this.sessions = [];
     for (let s of mySessions){
       let se = {
         s_date: '',
+=======
+    this.sessions=[];
+    for(let s of mySessions){
+      let se={
+        s_date:'',
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         s_duration: 0,
         s_subject: '',
         s_curriculum: '',
         s_location: '',
+<<<<<<< HEAD
         s_times: [],
       };
       se.s_date = s[0].time;
@@ -423,6 +641,26 @@ export class TutorBookingsComponent implements OnInit {
         let time = temp.substr(11, 2) + temp.substr(14, 2);
         if (this.sessions[i].s_times.length > 0) {
           if (!this.sessions[i].s_times.includes(time)) {
+=======
+        s_times:[],
+      };
+      se.s_date=s[0].time;
+      se.s_duration=s.length/2;
+      se.s_subject=s[0].subject;
+      se.s_curriculum=s[0].curriculum;
+      se.s_location=s[0].location;
+      this.sessions.push(se);
+    }
+    // for loop to generate the all start time array
+    for(let i =0; i < this.sessions.length; i++) {
+      let dura = this.sessions[i].s_duration * 2;
+      for(let j =0; j < dura; j++) {
+        let t =30 * j;
+        let temp =moment(this.sessions[i].s_date).add(t,'minutes').format();
+        let time =temp.substr(11,2) + temp.substr(14,2);
+        if(this.sessions[i].s_times.length > 0) {
+          if(!this.sessions[i].s_times.includes(time)) {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
             this.sessions[i].s_times.push(time);
           }
         } else {
@@ -454,28 +692,48 @@ export class TutorBookingsComponent implements OnInit {
       selectOverlap: false,
       minTime: moment.duration('08:00:00'),
       maxTime: moment.duration('21:00:00'),
+<<<<<<< HEAD
       viewRender: function(view, element) {// set the button in header
+=======
+      viewRender: function(view, element) {//set the button in header
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         $('.fc-today-button').css({'position': 'absolute', 'top': '11px', 'right': '6%', 'font-size': '15px', 'background-color': '#0099FF', 'color': 'white', 'font-weight': 'bold'});
         $('.fc-prev-button').css({'position': 'absolute', 'left': '8%', 'height': '30px', 'width': '30px', 'border-radius': '100%', 'font-size': '15px', 'color': '#0099FF', 'font-weight': 'bold', 'border': '2px solid #0099FF', 'background-color': 'white'}); //
         $('.fc-prev-button').text('<');
         $('.fc-center h2').css({'font-size': '25px', 'color': '#525252', 'font-weight': 'bold'});
         $('.fc-next-button').css({'position': 'absolute', 'right': '8%', 'height': '30px', 'width': '30px', 'border-radius': '100%', 'font-size': '15px', 'color': '#0099FF', 'font-weight': 'bold', 'border': '2px solid #0099FF', 'background-color': 'white'});
         $('.fc-next-button').text('>');
+<<<<<<< HEAD
         if (moment(view.start).isBefore(moment().add(1, 'days'))) {
           $('.fc-prev-button').prop('disabled', true);
           $('.fc-prev-button').addClass('fc-state-disabled');
         } else {
           $('.fc-prev-button').removeClass('fc-state-disabled');
           $('.fc-prev-button').prop('disabled', false);
+=======
+        if(moment(view.start).isBefore(moment().add(1,'days'))) {
+          $(".fc-prev-button").prop('disabled', true);
+          $(".fc-prev-button").addClass('fc-state-disabled');
+        } else {
+          $(".fc-prev-button").removeClass('fc-state-disabled');
+          $(".fc-prev-button").prop('disabled', false);
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         }
       },
       eventAfterRender: function(event, element, view) {// style the events
         $(element).css({'font-size': '13px', 'border-radius': '0px', 'border': '0.1px solid white', 'margin': '0px'});
       },
+<<<<<<< HEAD
       eventRender: (event, element, view) => {   // render how event look like
         this.showDeletePop(event, element);
         this.showBookPop(event, element);
         $('span.fc-day-number').css({'font-size': '12px', 'color': '#525252'}); // calendar date number
+=======
+      eventRender: (event, element, view) => {   //render how event look like
+        this.showDeletePop(event,element);
+        this.showBookPop(event,element);
+        $('span.fc-day-number').css({'font-size': '12px', 'color': '#525252'}); //calendar date number
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       },
       eventClick: (e, jsEvent, view) => {
         this.addLesson(e);
@@ -513,7 +771,11 @@ export class TutorBookingsComponent implements OnInit {
   }
   // create an object using time
   createObject(time: any) {
+<<<<<<< HEAD
     let subject = this.session.subject.replace(/\s/g, '');
+=======
+    let subject = this.session.subject.replace(/\s/g,'');
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     let location = this.session.location;
     let curriculum = this.session.curriculum;
     let myObject = {

@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+<<<<<<< HEAD
     <div class="col-8">
       <div class="card">
         <div class="card-header">
@@ -34,6 +35,8 @@
       </div>
     </div>
 
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     <div class="col-12 col-lg-8">
       <div class="card">
         <div class="card-header">
@@ -43,6 +46,7 @@
           <div class="register-form">
             <form [formGroup]="learnersForm" (ngSubmit)="onSubmit()">
               <div class="input_group">
+<<<<<<< HEAD
                 <!-- <label>
                   <input type="checkbox" class="example-margin" [(ngModel)]="iAmLearner" [ngModelOptions]="{standalone: true}">
                   User of this account is a learner.
@@ -55,17 +59,44 @@
                     <mat-hint align="end">{{firstName.value?.length || 0}}/20</mat-hint>
                     <mat-error *ngIf="learnersForm.controls.learner_first_name.invalid && (learnersForm.controls.learner_first_name.dirty || learnersForm.controls.learner_first_name.touched)">
                       Please enter valid name.
+=======
+                <label>
+                  <input type="checkbox" class="example-margin" [(ngModel)]="iAmLearner" [ngModelOptions]="{standalone: true}">
+                  User of this account is a learner.
+                </label>
+                <!-- <input formControlName="first_name" [disableControl]="disable">-->
+                <div class="form_input" *ngIf="iAmLearner">
+                  <mat-form-field class="field-width" color="primary">
+                    <input matInput id="first_name" formControlName="learner_first_name" name="first_name" type="text"
+                           placeholder="Student first name">
+                    <mat-error
+                      *ngIf="learnersForm.controls.learner_first_name.invalid && (learnersForm.controls.learner_first_name.dirty || learnersForm.controls.learner_first_name.touched)">
+                      Please enter valid name, and required.
+                      <mat-error *ngIf="learnersForm.controls.learner_first_name.errors.minlength">
+                        Name must be at least 1 characters long.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.learner_first_name.errors.maxlength">
+                        Name must be at least 50 characters short.
+                      </mat-error>
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                     </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form_input" *ngIf="!iAmLearner">
                   <mat-form-field class="field-width">
+<<<<<<< HEAD
                     <input matInput id="diff_first_name" formControlName="learner_first_name" name="first_name" type="text" placeholder="Student first name">
+=======
+                    <input matInput id="diff_first_name" formControlName="learner_first_name" name="first_name"
+                           type="text"
+                           placeholder="Student first name">
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                   </mat-form-field>
                 </div>
 
                 <div class="form_input" *ngIf="iAmLearner">
                   <mat-form-field class="field-width">
+<<<<<<< HEAD
                     <input matInput id="last_name" #lastName maxlength="20" formControlName="learner_last_name" name="last_name" type="text"
                       placeholder="Student last name">
                     <mat-hint align="end">{{lastName.value?.length || 0}}/20</mat-hint>
@@ -91,12 +122,56 @@
                     <mat-error *ngIf="learnersForm.controls.learner_DOB.errors?.mindob">Year of birth year can not be earlier than 1930.
                     </mat-error>
                     <mat-error *ngIf="learnersForm.controls.learner_DOB.errors?.maxdob">Year of birth year can not be later than 2020.
+=======
+                    <input matInput id="last_name" formControlName="learner_last_name" name="last_name" type="text"
+                           placeholder="Student last name">
+                    <mat-error
+                      *ngIf="learnersForm.controls.learner_last_name.invalid && (learnersForm.controls.learner_last_name.dirty || learnersForm.controls.learner_last_name.touched)">
+                      Please enter valid name, and required.
+                      <mat-error *ngIf="learnersForm.controls.learner_last_name.errors.minlength">
+                        Name must be at least 1 characters long.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.learner_last_name.errors.maxlength">
+                        Name must be at least 50 characters short.
+                      </mat-error>
                     </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form_input" *ngIf="!iAmLearner">
                   <mat-form-field class="field-width">
+                    <input matInput id="diff_last_name" formControlName="learner_last_name" name="last_name"
+                           type="text"
+                           placeholder="Student last name">
+                  </mat-form-field>
+                </div>
+
+                <div class="form_input" *ngIf="iAmLearner">
+                  <mat-form-field class="field-width">
+                    <input matInput [min]="minDOB" [max]="maxDOB" [matDatepicker]="picker" formControlName="learner_DOB"
+                           placeholder="My Date of Birth (DD/MM/YYYY)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="learnersForm.controls.learner_DOB.errors?.required">Date of birth is required &
+                      please enter valid date.
+                    </mat-error>
+                    <!-- <mat-error *ngIf="appForm.controls.DOB.errors?.dFormat">Date of birth should be in MM/DD/YYYY format.</mat-error> -->
+                    <mat-error *ngIf="learnersForm.controls.learner_DOB.errors?.mindob">Year of birth year can not be
+                      earlier than 1930.
+                    </mat-error>
+                    <mat-error *ngIf="learnersForm.controls.learner_DOB.errors?.maxdob">Year of birth year can not be
+                      later than 2020.
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form_input" *ngIf="!iAmLearner">
+                  <mat-form-field class="field-width">
+<<<<<<< HEAD
                     <input matInput [min]="minDOB" [max]="maxDOB" [matDatepicker]="picker" formControlName="learner_DOB" placeholder="My Date of Birth (DD/MM/YYYY)">
+=======
+                    <input matInput [min]="minDOB" [max]="maxDOB" [matDatepicker]="picker" formControlName="learner_DOB"
+                           placeholder="My Date of Birth (DD/MM/YYYY)">
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
@@ -118,7 +193,12 @@
                 </div>
                 <div class="form_input">
                   <mat-form-field class="field-width">
+<<<<<<< HEAD
                     <mat-select multiple placeholder="My Curriculums" [formControl]="learnersForm.controls['curriculum']">
+=======
+                    <mat-select multiple placeholder="My Curriculums"
+                                [formControl]="learnersForm.controls['curriculum']">
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                       <mat-option *ngFor="let curriculum of curriculum_list" [value]="curriculum">{{curriculum}}
                       </mat-option>
                     </mat-select>
@@ -126,14 +206,47 @@
                 </div>
                 <div class="form_input">
                   <mat-form-field class="field-width">
+<<<<<<< HEAD
                     <textarea matInput #aspirations formControlName="aspiration" placeholder="My aspirations"></textarea>
                     <mat-hint align="end">{{aspirations.value?.length || 0}}/50</mat-hint>
+=======
+                  <textarea matInput #aspirations formControlName="aspiration"
+                            placeholder="My aspirations"></textarea>
+                    <mat-hint align="end">{{aspirations.value?.length || 0}}/50</mat-hint>
+                    <mat-error
+                      *ngIf="learnersForm.controls.aspiration.invalid && (learnersForm.controls.aspiration.dirty || learnersForm.controls.aspiration.touched)">
+                      <mat-error *ngIf="learnersForm.controls.aspiration.errors.required">
+                        Your aspirations is required.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.aspiration.errors.minlength">
+                        Your aspirations must be at least 1 characters long.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.aspiration.errors.maxlength">
+                        Your aspirations must be at least 50 characters short.
+                      </mat-error>
+                    </mat-error>
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                   </mat-form-field>
                 </div>
                 <div class="form_input">
                   <mat-form-field class="field-width">
                     <textarea matInput #input formControlName="sp_need" placeholder="Any special Request"></textarea>
                     <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+<<<<<<< HEAD
+=======
+                    <mat-error
+                      *ngIf="learnersForm.controls.sp_need.invalid && (learnersForm.controls.sp_need.dirty || learnersForm.controls.sp_need.touched)">
+                      <mat-error *ngIf="learnersForm.controls.sp_need.errors.required">
+                        Special Request is required.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.sp_need.errors.minlength">
+                        Special Request must be at least 1 characters long.
+                      </mat-error>
+                      <mat-error *ngIf="learnersForm.controls.sp_need.errors.maxlength">
+                        Special Request must be at least 50 characters short.
+                      </mat-error>
+                    </mat-error>
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
                   </mat-form-field>
                 </div>
                 <div class="submit_success" [hidden]="!submitted">
@@ -151,4 +264,8 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 <!-- container -->
+=======
+<!-- container -->
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7

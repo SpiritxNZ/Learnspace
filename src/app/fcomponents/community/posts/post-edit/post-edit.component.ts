@@ -166,10 +166,17 @@ export class PostEditComponent implements OnInit {
     if (this.post) { this.passId = '/' + this.post.id }
     else { this.passId = '' }
     // return console.log(this.newPostInfo)
+<<<<<<< HEAD
     // this.postService.storeTutorPost(this.newPostInfo, this.passId).subscribe(
     //   (res) => this.onPostSaved(res),
     //   (error) => { console.warn(error); this.errorMessage = 'Oh no, something went wrong.' }
     // );
+=======
+    this.postService.storeTutorPost(this.newPostInfo, this.passId).subscribe(
+      (res) => this.onPostSaved(res),
+      (error) => { console.warn(error); this.errorMessage = 'Oh no, something went wrong.' }
+    );
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   onPostSaved(a) {

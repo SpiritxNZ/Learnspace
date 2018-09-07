@@ -97,9 +97,12 @@ import { SessionEditDialogComponent } from './fcomponents/dashboard/dashboard-di
 import { SchedulesListComponent } from './fcomponents/dashboard/schedules-lessons/schedules-list/schedules-list.component';
 import { LearnerTutorsPanelComponent } from './fcomponents/dashboard/learner-tutors/learner-tutors-panel/learner-tutors-panel.component';
 import { ViewAllSessionDialogComponent } from './fcomponents/dashboard/dashboard-dialogs/view-all-session-dialog/view-all-session-dialog.component';
+<<<<<<< HEAD
 import { ResourceEditComponent } from './fcomponents/dashboard/resources-homework/resources-controller/resource-edit/resource-edit.component';
 import { ResourcesCollectionComponent } from './fcomponents/dashboard/resources-homework/resources-collection/resources-collection.component';
 import { ArticleParentComponent } from './fcomponents/dashboard/resources-homework/resources-collection/article-parent/article-parent.component';
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 import { SearchResourcesPanelComponent } from './fcomponents/dashboard/resources-homework/search-resources/search-resources-panel/search-resources-panel.component';
 import { SearchResourcesBarComponent } from './fcomponents/dashboard/resources-homework/search-resources/search-resources-bar/search-resources-bar.component';
@@ -185,6 +188,7 @@ const appRoutes: Routes = [
           },
           {
             path: 'tutor/resources', component: ResourcesControllerComponent, canActivate: [RestrictGuard, AccessTutorGuard],
+<<<<<<< HEAD
             children: [
             //   {
             //   path: 'add', component: EditResourcePanelComponent,
@@ -203,11 +207,23 @@ const appRoutes: Routes = [
                 { path: 'article', component: ResourcesCollectionComponent },
                 { path: 'resource', component: ResourcesCollectionComponent },
                 { path: 'question', component: ResourcesCollectionComponent }
+=======
+            children: [{
+              path: 'add', component: EditResourcePanelComponent,
+              children: [
+                {
+                  path: 'homework', component: TutorHomeworkComponent, children: [
+                    { path: 'shortanswer', component: ShortAnswersParentComponent },
+                    { path: 'multiplechoice', component: MultipleChoiceParentComponent }
+                  ]
+                }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
               ]
             },
             {
               path: 'edit', component: EditResourcePanelComponent,
               children: [
+<<<<<<< HEAD
                 { path: 'article', component: ResourcesCollectionComponent },
                 { path: 'resource', component: ResourcesCollectionComponent },
                 { path: 'question', component: ResourcesCollectionComponent }
@@ -221,6 +237,16 @@ const appRoutes: Routes = [
               //     ]
               //   }
               // ]
+=======
+                {
+                  path: 'homework', component: TutorHomeworkComponent,
+                  children: [
+                    { path: 'shortanswer', component: ShortAnswersParentComponent },
+                    { path: 'multiplechoice', component: MultipleChoiceParentComponent }
+                  ]
+                }
+              ]
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
             }
             ]
           },
@@ -360,9 +386,12 @@ export const MY_FORMATS = {
     HelpApplicantsMainComponent,
     HelpMainComponent,
     ViewAllSessionDialogComponent,
+<<<<<<< HEAD
     ResourceEditComponent,
     ResourcesCollectionComponent,
     ArticleParentComponent
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   ],
 
   imports:[

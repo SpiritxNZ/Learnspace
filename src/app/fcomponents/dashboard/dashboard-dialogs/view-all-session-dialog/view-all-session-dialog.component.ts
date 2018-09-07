@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { TutorService } from '../../../../services/servercalls/tutor.service';
+<<<<<<< HEAD
 import { AuthService } from '../../../../services/security/auth.service';
 import { LearnerService } from '../../../../services/servercalls/learner.service';
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 import * as moment from 'moment';
 
 
@@ -14,23 +17,38 @@ import * as moment from 'moment';
 export class ViewAllSessionDialogComponent implements OnInit {
 
   name: any;
+<<<<<<< HEAD
   sessions: any;
   errorMessage: string;
   selectStatus: any;
   status: string = "all";
   rolePosition: number;
 
+=======
+
+  sessions: any;
+
+  errorMessage: string;
+
+  selectStatus: any;
+
+  status : string = "all";
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 
   constructor(
     private tutorService: TutorService,
+<<<<<<< HEAD
     private authService: AuthService,
     private learnerService: LearnerService,
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     private dialogRef: MatDialogRef<ViewAllSessionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.rolePosition = this.authService.getUserRole()
 
     console.log('report data', this.data);
@@ -70,6 +88,29 @@ export class ViewAllSessionDialogComponent implements OnInit {
 
 
     }
+=======
+    console.log('report data', this.data);
+    this.name = this.data.student_name;
+    this.showAllSessions(this.data.student_id);
+  }
+
+
+  showAllSessions(studentId) {
+    this.tutorService.showTutorStudent(studentId).subscribe(
+      (res) => {
+        console.log(res);
+
+
+        this.sessions = this.getAllSessions(res);
+        this.sessions = this.sessions.filter(x => !!x);
+
+        console.log("The following will show all sessions:");
+        console.log(this.sessions);
+      },
+      (err) => { console.log(err), this.errorMessage = "Sorry, but something went wrong." }
+    )
+
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   getAllSessions(sessionsList: any) {

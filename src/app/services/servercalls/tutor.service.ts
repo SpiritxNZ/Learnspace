@@ -53,6 +53,7 @@ export class TutorService {
   }
 
   // Tutor Posts
+<<<<<<< HEAD
   // storeTutorPost(postObject, postId) {
   //   return this.http.post(this.baseUrl + '/tutors/' + this.id + '/posts' + postId, postObject, { headers: this.headers1 });
   // }
@@ -65,6 +66,14 @@ export class TutorService {
 
   showTutorPost() {
     return this.http.get(this.baseUrl + '/tutors/' + this.id + '/posts', { headers: this.headers1 });
+=======
+  storeTutorPost(postObject, postId) {
+    return this.http.post(this.baseUrl + '/tutors/' + this.id + '/posts' + postId, postObject, { headers: this.headers1 });
+  }
+
+  showTutorPost(postId) {
+    return this.http.get(this.baseUrl + '/tutors/' + this.id + '/posts/' + postId, { headers: this.headers1 });
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   // Tutor Resources

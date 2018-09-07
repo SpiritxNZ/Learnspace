@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 
 // The entry point of all resources related components
 
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 @Component({
   selector: 'app-resources-controller',
@@ -11,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ResourcesControllerComponent implements OnInit {
 
+<<<<<<< HEAD
   // current route url
   currentRoute: string;
   // current operation, create -> 0, edit -> 1, view -> 2
@@ -43,6 +48,11 @@ export class ResourcesControllerComponent implements OnInit {
       case 2:
         console.log("View component");
     }
+=======
+  constructor() { }
+
+  ngOnInit() {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
 }

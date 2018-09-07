@@ -340,7 +340,11 @@ export class DashboardHomeSessionsComponent implements OnInit {
       this.processDialog(selectedSession, myEvents, myLocs, times, this.role);
     } else {
       // if not found, then go to server to get the data
+<<<<<<< HEAD
       this.learnerService.showSchedule(tutorID).subscribe(
+=======
+      this.learnerService.indexTutor(tutorID).subscribe(
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         (res) => {
           console.log(res);
           let loc = res['dataCon'].tutorProfile.teaching_locations;

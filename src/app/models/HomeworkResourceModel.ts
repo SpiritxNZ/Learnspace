@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 // Post Type: 0 -> article, 1 -> resource, 2 -> question
@@ -116,6 +117,8 @@ export class BasicOpProperty {
 
 
 
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 export interface HomeworkResourceModel {
 
 }

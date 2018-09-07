@@ -38,11 +38,16 @@ export class UserService {
   }
 
   // User Edit Photos
+<<<<<<< HEAD
   updateUserPhoto(aa) {
     console.log('update photos');
     console.log(aa);
     console.log(this.headers1);
     return this.http.post(this.baseUrl+'/users/'+this.userId+'/picture', aa, {headers: this.headers1});
+=======
+  updateUserPhoto(aa){
+    return this.http.post(this.baseUrl+'/users/'+this.userId+'/picture', aa, {headers:this.headers1})
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   // User Disucssions

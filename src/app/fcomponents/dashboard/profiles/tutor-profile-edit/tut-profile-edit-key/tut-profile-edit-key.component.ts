@@ -1,12 +1,19 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+<<<<<<< HEAD
 import { Validators, FormGroup, FormControl, FormBuilder, FormControlName } from '@angular/forms';
+=======
+import { Validators,FormGroup, FormControl, FormBuilder, FormControlName } from '@angular/forms';
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 import { TutorService } from '../../../../../services/servercalls/tutor.service';
 import { ImageEditorDialogComponent } from '../../../../support/image-editor-dialog/image-editor-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { environment } from '../../../../../../environments/environment.prod';
 import { SideHelperService } from '../../../../../services/helpers/side-helper.service';
 import { CommonSupportService } from '../../../../../services/support/common-support.service';
+<<<<<<< HEAD
 import { UserService} from '../../../../../services/servercalls/user.service';
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 @Component({
   selector: 'app-tut-profile-edit-key',
@@ -48,6 +55,7 @@ export class TutProfileEditKeyComponent implements OnInit {
     private elem: ElementRef,
     private builder: FormBuilder,
     private tutorService: TutorService,
+<<<<<<< HEAD
     private sideHelperService: SideHelperService,
     private dialog: MatDialog,
     private commonSupport: CommonSupportService,
@@ -56,14 +64,28 @@ export class TutProfileEditKeyComponent implements OnInit {
 
   ngOnInit() {
     this.form();
+=======
+    private SideHelperService: SideHelperService,
+    private dialog: MatDialog,
+    private commonSupport: CommonSupportService
+  ) { }
+
+  ngOnInit() {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     this.tutorService.showTutorProfile().subscribe(
       (res) => {console.log(res);this.setFormValues(res)},
       (error) => {console.log('no'), this.errorMessage="Sorry, but we can't get your data at this time."}
     )
   }
+<<<<<<< HEAD
   // define the reactive form
   form(){
     this.stateForm = this.builder.group({state : ['', [Validators.minLength(20), Validators.maxLength(3000)], ] });
+=======
+  //define the reactive form
+  form(){
+    this.stateForm = this.builder.group({state :['',[Validators.minLength(20),Validators.maxLength(3000)],] });
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     this.LocationForm0 = this.builder.group({
       city:[this.tutor.teaching_locations[0].city,[Validators.required,Validators.minLength(3)]],
       suburb:[this.tutor.teaching_locations[0].suburb,[Validators.required,Validators.minLength(3)]],
@@ -212,6 +234,7 @@ export class TutProfileEditKeyComponent implements OnInit {
   }
 
   submitImage(imageString){
+<<<<<<< HEAD
     console.log(imageString);
     if(imageString){
       fetch(imageString).then(
@@ -219,10 +242,19 @@ export class TutProfileEditKeyComponent implements OnInit {
           (blob)=> {
             this.formData.append('image', blob, 'a.jpeg');
             // this.formData.append('_method', 'put');
+=======
+    if(imageString){
+      fetch(imageString).then(
+        (res)=>res.blob()).then(
+          (blob)=>{
+            this.formData.append('image', blob, 'a.jpeg');
+            this.formData.append('_method', 'put');
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
             this.sendToBackEnd(this.formData);
           }
         )
     }
+<<<<<<< HEAD
     else{this.errorMessage2 = "Sorry, but something has gone wrong. "}
   }
 
@@ -250,11 +282,41 @@ export class TutProfileEditKeyComponent implements OnInit {
       return this.stStatus = false;
     }else{
       this.errorMessage3 = 'Content is invalid';
+=======
+    else{this.errorMessage2="Sorry, but something has gone wrong. "}
+  }
+
+  sendToBackEnd(data){
+    this.tutorService.updateTutorProfile(data).subscribe(
+      (res)=>{console.log(res)},
+      (err)=>{console.log(err), this.errorMessage2="Sorry, but something has gone wrong with our computers :(  "}
+    )
+  }
+
+  defState(){
+    if(this.stateForm.valid && this.stateForm.dirty){
+      this.errorMessage3='';
+      this.Profile.intro_statement=this.stateForm.value.state;
+      this.tutor.intro_statement=this.stateForm.value.state;
+      this.Profile._method='put';
+      console.log(this.Profile);
+      this.tutorService.updateTutorProfile(this.Profile).subscribe(
+        (res) => {console.log(res); },
+        (err) => {console.log(err), this.errorMessage3="Sorry, but something has gone wrong with our computers :(  "}
+      )
+      return this.stStatus=false;
+    }else{
+      this.errorMessage3='Content is invalid';
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       console.log('no');
     }
   }
 
   mouseEnter(m) {
+<<<<<<< HEAD
     this.sideHelperService.sendMessage(m);
+=======
+    this.SideHelperService.sendMessage(m);
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 }

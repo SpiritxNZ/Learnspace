@@ -71,6 +71,7 @@ export class RepositoryService {
     }
 
     // Gather Applicant Specific Data
+<<<<<<< HEAD
    sessionApplicantData() {
     // if(this.isBrowser){
     //   let aInfo = JSON.parse(sessionStorage.getItem('lsaSpApplicantInfo'));
@@ -80,6 +81,16 @@ export class RepositoryService {
     //   }
     // }
     this.currentApplicantData();
+=======
+   sessionApplicantData(){
+    if(this.isBrowser){
+      let aInfo = JSON.parse(sessionStorage.getItem('lsaSpApplicantInfo'));
+      if(!aInfo){this.currentApplicantData()}
+      else{
+        this.applicantData.next(aInfo)
+      }
+    }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
    currentApplicantData(){
@@ -90,6 +101,7 @@ export class RepositoryService {
    }
 
    // Gather Tutor Specific Data
+<<<<<<< HEAD
    sessionTutorData() {
     this.currentTutorData();
     // if(this.isBrowser){
@@ -104,6 +116,21 @@ export class RepositoryService {
   }
 
    currentTutorData() {
+=======
+   sessionTutorData(){
+    if(this.isBrowser){
+      let tInfo = JSON.parse(sessionStorage.getItem('lsaSpTutorInfo'));
+      let tProf = JSON.parse(sessionStorage.getItem('lsaSpTutorProfile'));
+      if(!tInfo||!tProf){this.currentTutorData()}
+      else{
+        this.combinedTutor = Object.assign(tInfo,tProf);
+        this.tutorData.next(this.combinedTutor);
+      }
+    }
+  }
+
+   currentTutorData(){
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
      this.tutorService.showTutorProfile().subscribe(
        (res)=>{
          this.combinedTutor=Object.assign(res['dataCon'].tutorInfo, res['dataCon'].tutorProfile,  )
@@ -114,6 +141,7 @@ export class RepositoryService {
      )
    }
    // Gather User Specific Data
+<<<<<<< HEAD
    sessionUserData() {
     this.currentUserData();
     // if(this.isBrowser){
@@ -126,6 +154,19 @@ export class RepositoryService {
     //     this.userData.next(this.combinedUser)
     //   };
     // }
+=======
+   sessionUserData(){
+    if(this.isBrowser){
+      let uKeys = JSON.parse(sessionStorage.getItem('lsaUserskeys'));
+      let uInfo = JSON.parse(sessionStorage.getItem('lsaUsersInfo'));
+      if(!uKeys||!uInfo){this.currentUserData()}
+      else{
+        // console.log('See how many times this gets fired')
+        this.combinedUser = Object.assign(uKeys,uInfo);
+        this.userData.next(this.combinedUser)
+      };
+    }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
    }
 
    currentUserData(){

@@ -26,14 +26,18 @@ export class LearnerProfileEditComponent implements OnInit {
   grade_list: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
 
 
+<<<<<<< HEAD
   learnerProfile: any;
 
 
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private learnerService: LearnerService,
     private userService: UserService,
+<<<<<<< HEAD
     private SideHelperService: SideHelperService
   ) { }
 
@@ -41,6 +45,15 @@ export class LearnerProfileEditComponent implements OnInit {
     /*transfer original date format to database format*/
     // let transferDOB = moment(this.learnersForm.value.learner_DOB).format().substr(0, 10);
     // this.learnersForm.controls['learner_DOB'].setValue(transferDOB);
+=======
+    private SideHelperService:SideHelperService
+  ) {}
+
+  onSubmit() {
+    /*transfer original date format to database format*/
+    let transferDOB = moment(this.learnersForm.value.learner_DOB).format().substr(0, 10);
+    this.learnersForm.controls['learner_DOB'].setValue(transferDOB);
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
     if (this.iAmLearner) {
       this.setUserFormValue();
@@ -55,6 +68,7 @@ export class LearnerProfileEditComponent implements OnInit {
     this.getLearnerInfo();
     this.createForm();
     this.createUserForm();
+<<<<<<< HEAD
     this.learnerService.indexLearnerProfile().subscribe(
       (res) => {
         console.log(res);
@@ -79,6 +93,10 @@ export class LearnerProfileEditComponent implements OnInit {
   }
 
 
+=======
+  }
+
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   /*put learner profile*/
   putLearnerInfo(dataToUpdate) {
     console.log(dataToUpdate);
@@ -88,10 +106,17 @@ export class LearnerProfileEditComponent implements OnInit {
     //   (err) => console.warn(err)
     // );
 
+<<<<<<< HEAD
     // this.learnerService.updateLearnerProfile(dataToUpdate).subscribe(
     //   (res) => console.log(res),
     //   (err) => console.warn(err)
     // );
+=======
+    this.learnerService.updateLearnerProfile(dataToUpdate).subscribe(
+      (res) => console.log(res),
+      (err) => console.warn(err)
+    );
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   /*put user profile*/
@@ -105,7 +130,11 @@ export class LearnerProfileEditComponent implements OnInit {
   }
 
   /*create user form*/
+<<<<<<< HEAD
   createUserForm() {
+=======
+  createUserForm () {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     this.usersForm = this.fb.group({
       first_name: [''],
       last_name: [''],
@@ -147,6 +176,7 @@ export class LearnerProfileEditComponent implements OnInit {
   /*create a form*/
   createForm() {
     this.learnersForm = this.fb.group({
+<<<<<<< HEAD
       learner_first_name: ['', [Validators.required, Validators.minLength(1), Validators.pattern("^[a-zA-Z ]*$")]],
       learner_last_name: ['', [Validators.required, Validators.minLength(1), Validators.pattern("^[a-zA-Z ]*$")]],
       learner_DOB: ['', [this.dateRange]],
@@ -155,6 +185,16 @@ export class LearnerProfileEditComponent implements OnInit {
       curriculum: [''],
       aspiration: [''],
       sp_need: [''],
+=======
+      learner_first_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')]],
+      learner_last_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')]],
+      learner_DOB: ['', [Validators.required, this.dateRange]],
+      subject: ['', Validators.required],
+      grade: [''],
+      curriculum: ['', Validators.required],
+      aspiration: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z 0-9]*$')]],
+      sp_need: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z 0-9]*$')]],
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     });
   }
 
@@ -176,10 +216,17 @@ export class LearnerProfileEditComponent implements OnInit {
     if (AC.value) {
       let year = parseInt(moment(AC.value.toString()).format());
       if (year < 1930) {
+<<<<<<< HEAD
         return { mindob: {} };
       }
       if (year > 2019) {
         return { maxdob: {} };
+=======
+        return {mindob: {}};
+      }
+      if (year > 2019) {
+        return {maxdob: {}};
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       }
       return null;
     }
@@ -188,4 +235,94 @@ export class LearnerProfileEditComponent implements OnInit {
     this.SideHelperService.sendMessage(m);
   }
 
+<<<<<<< HEAD
+=======
+
+  // learnersForm: FormGroup;
+  // submitted = false;
+  // currentlearner: any;
+  // errorMessage: string;
+  // formData = new FormData();
+  // minDOB = new Date(1929, 0, 1);
+  // maxDOB = new Date(2020, 0, 1);
+  // learnersData: any;
+  // learnerInfo: any;
+  // curriculum_list: string[] = ['(NCEA) National Certificates of Educational', '(CIE) Cambridge', '(IB) International Baccalaureate'];
+  // subject_list: string[] = ['Math', 'Physics', 'Chemistry', 'Biology', 'Science', 'Geography', 'Social Studies', 'Information System', 'Accounting', 'Economics', 'Finance', 'English', 'Maori', 'French', 'German', 'Spanish', 'Chinese', 'Japanese'];
+  // temp_ist = ['(NCEA) National Certificates of Educational', '(CIE) Cambridge', '(IB) International Baccalaureate'];
+  //
+  // constructor(
+  //   private route: ActivatedRoute,
+  //   private fb: FormBuilder,
+  //   private learnerService: LearnerService,
+  //   private elem: ElementRef
+  // ) {
+  //   this.getLearnerInfo();
+  //   this.formData = new FormData();
+  // }
+  //
+  // ngOnInit() {
+  //   this.createForm();
+  // }
+  //
+  // // Get Learner Information from Database
+  // getLearnerInfo() {
+  //   this.learnerService.showLearnerProfile().subscribe(
+  //     (res) => {
+  //       this.learnerInfo = Object.assign(res['dataCon'].learnerProfile),
+  //       this.setFormValuesTo(this.learnerInfo);
+  //     },
+  //     (err) => {this.errorMessage = "Sorry, we can't get to your information at this time.";}
+  //   );
+  // }
+  //
+  // // Initialise Reactive Form
+  // createForm() {
+  //   this.learnersForm = this.fb.group({
+  //     learner_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')]],
+  //     learner_DOB: ['', [Validators.required, this.dateRange]],
+  //     subject: ['', Validators.required],
+  //     curriculum: ['', Validators.required],
+  //     aspiration: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z 0-9]*$')]],
+  //     sp_need: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[a-zA-Z 0-9]*$')]],
+  //   });
+  // }
+  //
+  // // Date validition method
+  // dateRange(AC: FormControl) {
+  //   if (AC.value) {
+  //     let year = parseInt(moment(AC.value.toString()).format());
+  //     if (year < 1930) {return {mindob: {}};}
+  //     if (year > 2019) {return {maxdob: {}};}
+  //     return null;
+  //   }
+  // }
+  //
+  // // Set returned data values into form
+  // setFormValuesTo(userInfoData) {
+  //   this.learnersForm.controls['learner_name'].setValue(userInfoData.learner_name);
+  //   this.learnersForm.controls['learner_DOB'].setValue(userInfoData.learner_DOB);
+  //   this.learnersForm.controls['subject'].setValue(userInfoData.subject);
+  //   this.learnersForm.controls['curriculum'].setValue(userInfoData.curriculum);
+  //   this.learnersForm.controls['aspiration'].setValue(userInfoData.aspiration);
+  //   this.learnersForm.controls['sp_need'].setValue(userInfoData.sp_need);
+  // }
+  //
+  // // Submit form
+  // onSubmit() {
+  //   let transfer_DOB = moment(this.learnersForm.value.learner_DOB).format().substr(0, 10);
+  //   this.learnersForm.controls['learner_DOB'].setValue(transfer_DOB);
+  //   this.learnersData = this.learnersForm.value;
+  //   this.postLearnerInfo(this.learnersData);
+  //   this.submitted = true;
+  // }
+  //
+  // // Pass updated values to backend API
+  // postLearnerInfo(dataToUpdate) {
+  //   this.learnerService.updateLearnerProfile(dataToUpdate).subscribe(
+  //     (res) => console.log(res),
+  //     (err) => console.warn(err)
+  //   );
+  // }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 }

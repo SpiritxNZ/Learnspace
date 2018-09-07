@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit, Input } from '@angular/core';
 import { LearnerService } from '../../../services/servercalls/learner.service';
 import { Title } from '@angular/platform-browser';
@@ -8,6 +9,14 @@ export interface courseList {
   courseName: string;
   selected: boolean;
 
+=======
+import { Component, OnInit } from '@angular/core';
+import { LearnerService } from '../../../services/servercalls/learner.service';
+import { Title } from '@angular/platform-browser';
+export interface courseList {
+  courseName: string;
+  selected: boolean;
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 }
 @Component({
   selector: 'app-new-user-welcome',
@@ -15,6 +24,7 @@ export interface courseList {
   styleUrls: ['./new-user-welcome.component.css']
 })
 export class NewUserWelcomeComponent implements OnInit {
+<<<<<<< HEAD
   selected1 = '';
   YearLevel = false;
   CoursePage = false;
@@ -44,6 +54,12 @@ export class NewUserWelcomeComponent implements OnInit {
   courses: courseList[] = [
     { courseName: 'Math', selected: false, },
     { courseName: 'English', selected: false, },
+=======
+  selectedCourse=[];
+  courses: courseList[] = [
+    { courseName: 'Math', selected: false, },
+    { courseName: 'English', selected: false,},
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     { courseName: 'Science', selected: false, },
     { courseName: 'Calculus', selected: false, },
     { courseName: 'Chemistry', selected: false, },
@@ -73,6 +89,7 @@ export class NewUserWelcomeComponent implements OnInit {
   constructor(
     private learnerService: LearnerService,
     private titleService: Title,
+<<<<<<< HEAD
     private fb: FormBuilder,
     private router:Router,
   ) {
@@ -81,10 +98,16 @@ export class NewUserWelcomeComponent implements OnInit {
       isLearner: false,
     });
   }
+=======
+  ){
+    this.titleService.setTitle('Learnspace | Welcome');
+   }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
   ngOnInit() {
   }
 
+<<<<<<< HEAD
   addCourse() {
     this.selectedCourse = [];
     this.subjects = "";
@@ -112,12 +135,29 @@ export class NewUserWelcomeComponent implements OnInit {
     };
 
     console.log(data)
+=======
+  addCourse(){
+    this.selectedCourse=[];
+    for(let course of this.courses){
+      if (course.selected == true){
+        this.selectedCourse.push(course.courseName);
+      }
+      if(this.selectedCourse.some(x => x === course.courseName )){
+          let index = this.selectedCourse.indexOf(course.courseName)
+          this.selectedCourse.slice(index,1);
+        }
+      };
+      let data={
+        subject:this.selectedCourse,
+      };
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
     this.learnerService.storeLearnerProfile(data).subscribe((res) => {
       console.log(res);
     }, (err) => {
       console.log(err);
     });
+<<<<<<< HEAD
 
 
     this.learner_num += 1;
@@ -193,5 +233,30 @@ export class NewUserWelcomeComponent implements OnInit {
   finished(){
     this.router.navigate(["/app/find-tutor"])
   }
+=======
+    console.log(this.selectedCourse);
+    }
+    selected1 ='';
+    YearLevel = true;
+    CoursePage = false;
+    highCourse= true;
+    uniCourse= false;
+    showCourse(){
+      this.YearLevel = false;
+      this.CoursePage = true;
+    }
+    showYearLevel(){
+      this.YearLevel = true;
+      this.CoursePage = false;
+    }
+    showHighCourse(){
+      this.highCourse = true;
+      this.uniCourse= false;
+    }
+    showUniCourse(){
+      this.uniCourse = true;
+      this.highCourse = false;
+    }
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 }

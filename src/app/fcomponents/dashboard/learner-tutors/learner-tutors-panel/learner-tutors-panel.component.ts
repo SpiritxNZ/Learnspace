@@ -2,7 +2,10 @@
 
 import { Component, OnInit, Pipe, Input } from '@angular/core';
 import { TutorService } from '../../../../services/servercalls/tutor.service';
+<<<<<<< HEAD
 import { LearnerService } from '../../../../services/servercalls/learner.service';
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 import { AuthService } from '../../../../services/security/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ViewAllSessionDialogComponent } from '../../dashboard-dialogs/view-all-session-dialog/view-all-session-dialog.component';
@@ -19,7 +22,10 @@ import * as moment from 'moment';
 export class LearnerTutorsPanelComponent implements OnInit {
   rolePosition: number;
   students: any;
+<<<<<<< HEAD
   tutors: any;
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   sessions: any;
   errorMessage: string;
   display: any = window;
@@ -28,8 +34,12 @@ export class LearnerTutorsPanelComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private tutorService: TutorService,
+<<<<<<< HEAD
     private authService: AuthService,
     private learnerService: LearnerService,
+=======
+    private authService:AuthService,
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
   ) { }
 
@@ -42,6 +52,7 @@ export class LearnerTutorsPanelComponent implements OnInit {
         trigger: "hover",
       });
     })
+<<<<<<< HEAD
     if (this.rolePosition == 3) {
       this.getStudentList();
     } else {
@@ -344,6 +355,175 @@ export class LearnerTutorsPanelComponent implements OnInit {
   reportClick(studentReport, id) {
     //console.log(studentReport);
     if (studentReport == "There is no report exist" || studentReport == "Please enter a report") {
+=======
+    
+    this.getStudentList();
+  }
+
+  getStudentList(){
+        this.tutorService.indexTutorStudents().subscribe(
+          (res) => {
+            console.log(res)
+            let studentList = [];
+
+            let keys = Object.keys(res['dataCon']);
+
+            for (let i = 0; i < keys.length; i++) {
+              studentList[i] = res['dataCon'][keys[i]]
+            }
+            this.students = this.getStudentInfo(studentList);
+            this.students = this.students.filter(x => !!x);
+          },
+          (error) => { console.log(error), this.errorMessage = 'Sorry, but something went wrong.' }
+        )
+      }
+
+  //creat the whole student list
+  getStudentInfo(students: any) {
+        let studentList = students.map(e => {
+          let newObj = {};
+          if (e != null) {
+
+            let studentid = e.learner_id;
+            let userid = e.user_id;
+            let firstname = "";
+            if (e.learner_first_name == null) {
+              firstname = 'Unknown';
+            } else {
+              firstname = e.learner_first_name[0].toUpperCase() + e.learner_first_name.substring(1).toLowerCase();
+            }
+            let lastname = "";
+            if (e.learner_last_name == null) {
+              lastname = 'Unknown';
+            } else {
+              lastname = e.learner_last_name[0].toUpperCase() + e.learner_last_name.substring(1).toLowerCase();
+            }
+            let level = e.grade;
+            let subjects = "";
+
+            if (e.subject == null) {
+              subjects = "There is no subject exist for this student."
+            } else {
+              for (let i = 0; i < e.subject.length - 1; i++) {
+                subjects = subjects + e.subject[i] + ", ";
+              };
+              subjects += e.subject[e.subject.length - 1];
+            }
+
+            //last session informations
+            let lastsessionid: any;
+            let lastlocation: any;
+            let lastreport: any;
+            let lastrequirement = "something";
+            let lastsessiondate: any;
+            let lastdate: any;
+            let lastnewDate: any;
+            let laststarttime: any;
+            let lastendTime: any;
+            if (e.last_session != "") {
+              lastsessionid = e.last_session.session_id
+              lastsessiondate = e.last_session.session_date;
+              lastdate = this.changeToMoment(lastsessiondate)
+              lastnewDate = lastdate.format("LL");
+              laststarttime = lastdate.format('LT');
+              lastendTime = lastdate.add(e.last_session.session_duration, 'hours').format('LT');
+
+              lastlocation = e.last_session.session_location;
+              if (e.last_session.tutor_report != null) {
+                lastreport = e.last_session.tutor_report;
+              } else {
+                lastreport = "There is no report exist";
+              }
+            } else {
+              lastsessiondate = "";
+              lastdate = "";
+              lastnewDate = "";
+              laststarttime = "";
+              lastendTime = "";
+              lastreport = "There is no report exist";
+              lastlocation = "";
+              lastsessionid = "";
+            }
+            //next session informations
+            let nextsessionid: any;
+            let nextlocation: any;
+            let nextreport: any;
+            let nextrequirement = "";
+            let nextsessiondate: any;
+            let nextdate: any;
+            let nextnewDate: any;
+            let nextstarttime: any;
+            let nextendTime: any;
+            if (e.next_session != "") {
+              nextsessionid = e.next_session.session_id
+              nextsessiondate = e.next_session.session_date;
+              nextdate = this.changeToMoment(nextsessiondate)
+              nextnewDate = nextdate.format("LL");
+              nextstarttime = nextdate.format('LT');
+              nextendTime = nextdate.add(e.next_session.session_duration, 'hours').format('LT');
+
+              nextlocation = e.next_session.session_location;
+              if (e.next_session.tutor_report != null) {
+                nextreport = e.next_session.tutor_report;
+              } else {
+                nextreport = "There is no report exist";
+              }
+            } else {
+              nextsessiondate = "";
+              nextdate = "";
+              nextnewDate = "";
+              nextstarttime = "";
+              nextendTime = "";
+              nextreport = "There is no report exist";
+              nextlocation = "";
+              nextsessionid = "";
+            }
+            newObj = {
+              user_id: userid,
+              student_id: studentid,
+              first_name: firstname,
+              last_name: lastname,
+              level: level,
+              subjects: subjects,
+
+              last_session_id: lastsessionid,
+              last_session_location: lastlocation,
+              last_session_report: lastreport,
+              last_session_requirement: lastrequirement,
+              last_session_date: lastnewDate,
+              last_session_starttime: laststarttime,
+              last_session_endtime: lastendTime,
+
+              next_session_id: nextsessionid,
+              next_session_location: nextlocation,
+              next_session_report: nextreport,
+              next_session_requirement: nextrequirement,
+              next_session_date: nextnewDate,
+              next_session_starttime: nextstarttime,
+              next_session_endtime: nextendTime,
+
+              img: this.baseImgUrl + userid + "-cp.jpeg",
+            }
+            return newObj;
+          } else {
+            return null;
+          }
+        })
+    return studentList
+      }
+
+  // change time to moment object format
+  changeToMoment(time: any): any {
+        let sessionDate = time.slice(0, 10);
+        let sessionTime = time.slice(11);
+        let date = sessionDate + 'T' + sessionTime;
+        return moment(date);
+      }
+
+  reportClick(studentReport, id) {
+        //console.log(studentReport);
+        if(studentReport == "There is no report exist" || studentReport == "Please enter a report") {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       this.generateReport(id);
       //window.open("https://www.google.com");
     } else {
@@ -360,14 +540,23 @@ export class LearnerTutorsPanelComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   viewAllSession(ID, Name) {
+=======
+  viewAllSession(studentID, studentName) {
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     console.log('view all session');
     let dialogRef = this.dialog.open(ViewAllSessionDialogComponent,
       {
         panelClass: 'dialog1',
         data: {
+<<<<<<< HEAD
           id: ID,
           name: Name,
+=======
+          student_id: studentID,
+          student_name: studentName,
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
         },
       });
     dialogRef.afterClosed().subscribe(

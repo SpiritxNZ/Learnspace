@@ -22,16 +22,24 @@ export class LearnerService {
   }
 
   // Learner Profile
+<<<<<<< HEAD
   indexLearnerProfile(){
     return this.http.get(this.baseUrl + '/learners/' + this.id +'/profile', {headers: this.headers1});
   }
   
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   showLearnerProfile() {
     return this.http.get(this.baseUrl + '/learnerprofile/' + this.id, { headers: this.headers1 });
   }
 
+<<<<<<< HEAD
   updateLearnerProfile(profileId, ee) {
     return this.http.put(this.baseUrl + '/learners/' + this.id +'/profile/' + profileId, ee, { headers: this.headers1 });
+=======
+  updateLearnerProfile(ee) {
+    return this.http.put(this.baseUrl + '/learnerprofile/' + this.id, ee, { headers: this.headers1 });
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
   }
 
   // Learner Resources
@@ -53,7 +61,10 @@ export class LearnerService {
 
   // Learner Sessions
   storeLearnerSessions(tutorId, bookings) {
+<<<<<<< HEAD
     console.log(tutorId, bookings);
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
     return this.http.post(this.baseUrl + '/learners/' + this.id + '/tutors/' + tutorId + '/sessions', bookings, { headers: this.headers1 });
   }
 
@@ -82,10 +93,13 @@ export class LearnerService {
   indexTutor(queryParams: string) {
     return this.http.get(this.baseUrl + '/learners/' + this.id + '/tutors?' + 'tut=' + queryParams, { headers: this.headers1 });
   }
+<<<<<<< HEAD
   // show tutor schedule
   showSchedule(queryParams: string) {
     return this.http.get(this.baseUrl + '/learners/' + this.id + '/tutorshow/' + queryParams, { headers: this.headers1 });
   }
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
   showTutor(id: string) {
     return this.http.get(this.baseUrl + '/findtutors/' + id);
@@ -94,6 +108,7 @@ export class LearnerService {
   storeLearnerProfile(courseList) {
     return this.http.post(this.baseUrl + '/learners/' + this.id + '/profile', courseList, { headers: this.headers1 });
   }
+<<<<<<< HEAD
   // Learner See Tutor
   indexLearnersTutor(queryParams: string) {
     return this.http.get(this.baseUrl + '/learners/' + this.id + '/tutors?' + 'tut=' + queryParams, { headers: this.headers1 });
@@ -102,6 +117,8 @@ export class LearnerService {
   showLearnersTutor(tutorId: string) {
     return this.http.get(this.baseUrl + '/learners/' + this.id + '/tutors/' +tutorId, { headers: this.headers1 });
   }
+=======
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
 
 
 }

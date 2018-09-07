@@ -2,8 +2,13 @@
 
 <ng-template #homepage>
   <nav id="top-navbar" class="navbar navbar-expand-md home" [ngClass]="(screenStatus && (navStatus || collapseStatus) ) || (!screenStatus && navStatus)?'backgColor1 borderColor1':'backgColor2 borderColor2'">
+<<<<<<< HEAD
     <a class="navbar-brand logo home" href="index" [ngClass]="(screenStatus && (navStatus || collapseStatus) ) || (!screenStatus && navStatus)?'fontColor1':'fontColor2'">Learnspace</a>
     <button class="navbar-toggler home" type="button" (click)="collapseShow()" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary"
+=======
+    <a id="nav-logo" class="navbar-brand logo home" href="index" [ngClass]="(screenStatus && (navStatus || collapseStatus) ) || (!screenStatus && navStatus)?'fontColor1':'fontColor2'">Learnspace</a>
+    <button class="navbar-toggler home" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary"
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon home"></span>
     </button>
@@ -37,7 +42,11 @@
           <a class="nav-link navLink navRight home" href="https://learnspace.co.nz/app/work" routerLink="/work" [ngClass]="(screenStatus && (navStatus || collapseStatus) ) || (!screenStatus && navStatus)?'fontColor1':'fontColor2'">Apply to teach</a>
         </li>
 
+<<<<<<< HEAD
         <li *ngIf="loggedIn && loggedInUserName" class="nav-item dropdown home">
+=======
+        <li *ngIf="loggedInUserName" class="nav-item dropdown home">
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
           <a style="background-color:transparent;" class="nav-link dropdown-toggle navLink home" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngClass]="(screenStatus && (navStatus || collapseStatus) ) || (!screenStatus && navStatus)?'fontColor1':'fontColor2'">
             <img src={{userImg}} class="rounded-circle" width="23px"> {{loggedInUserName}}
@@ -45,7 +54,12 @@
 
           <ul class="dropdown-menu dropdown-menu-user dropdown-menu-right home" aria-labelledby="navbarDropdown" [ngClass]="screenStatus? 'backgColor2':'backgColor1'">
             <li>
+<<<<<<< HEAD
               <a class="dropdown-item fontColor3 homeIcon dpitem home" style="padding-left:30px;" routerLink="/app/dashboard/home" href="https://learnspace.co.nz/app/dashboard/home">Dashboard</a>
+=======
+              <a class="dropdown-item fontColor3 homeIcon dpitem home" style="padding-left:30px;" routerLink="/app/dashboard/home"
+                href="https://learnspace.co.nz/app/dashboard/home">Dashboard</a>
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
             </li>
             <li *ngIf="rolePosition == 1">
               <a class="dropdown-item fontColor3 teachingIcon home" style="padding-left:30px;" routerLink="/app/apply/teach" href="https://learnspace.co.nz/app/apply/teach">Apply to teach</a>
@@ -70,14 +84,24 @@
 </ng-template>
 
 <ng-template #dashboard>
+<<<<<<< HEAD
   <nav id="top-navbar" class="navbar navbar-expand-md dashboard">
     <a class="navbar-brand logo dashboard" href="index">Learnspace</a>
     <button class="navbar-toggler dashboard" type="button" (click)="collapseShow()" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary"
+=======
+  <nav  class="navbar navbar-expand-md dashboard">
+    <a class="navbar-brand logo dashboard" href="index">Learnspace</a>
+    <button class="navbar-toggler dashboard" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary"
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon dashboard"></span>
     </button>
 
+<<<<<<< HEAD
     <div class="collapse navbar-collapse dashboard" id="navbar-primary">
+=======
+    <div class="collapse navbar-collapse dashboard" >
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
       <ul class="navbar-nav mr-auto dashboard">
         <li class="nav-item dashboard">
           <a class="nav-link navLink dashboard" href="https://learnspace.co.nz/app/find-tutor" routerLink="/app/find-tutor">Find a Teacher
@@ -106,9 +130,15 @@
           <a class="nav-link navLink navRight dashboard" href="https://learnspace.co.nz/app/work" routerLink="/work">Apply to teach</a>
         </li>
 
+<<<<<<< HEAD
         <li *ngIf="loggedIn && loggedInUserName" class="nav-item dropdown dashboard">
           <a style="background-color:transparent;" class="nav-link dropdown-toggle navLink dashboard" href="#" id="navbarDropdown"
             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+=======
+        <li *ngIf="loggedInUserName" class="nav-item dropdown dashboard">
+          <a style="background-color:transparent;" class="nav-link dropdown-toggle navLink dashboard" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+>>>>>>> d9c24f092e8c16736e2db959be9e76246e08f3b7
             <i style="font-size:23px;" class="fa fa-user-circle"></i> &nbsp;{{loggedInUserName}}
           </a>
 
